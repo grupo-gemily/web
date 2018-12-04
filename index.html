@@ -14,10 +14,14 @@
 	<div class="container">
 		<!--Input search for category -->
 		<div class="input-group">
-		  <input type="text" class="form-control" placeholder="Busqueda por categoria..." aria-label="Dollar amount (with dot and two decimal places)">
-		  <div class="input-group-append">
-			<span class="input-group-text"><i class="fas fa-search"></i></span>
-		  </div> 
+			<select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+				<option selected>Selecionar categoria...</option>
+				<option value="1">Comestible</option>
+				<option value="2">No comestible</option>
+			</select>
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary" type="button"><i class="fas fa-filter"></i></button>
+			</div>
 		</div>
 		
 		<br>
@@ -25,9 +29,48 @@
 		<div class="input-group">
 		  <input type="text" class="form-control" placeholder="Busqueda por descipción..." aria-label="Dollar amount (with dot and two decimal places)">
 		  <div class="input-group-append">
-			<span class="input-group-text"><i class="fas fa-search"></i></span>
+			<button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
 		  </div> 
 		</div>
+		
+		<br>
+		<!--Input search for code barcode-->
+		<div class="input-group">
+		  <input type="text" class="form-control" placeholder="Busqueda por codigo de barra..." aria-label="Dollar amount (with dot and two decimal places)">
+		  <div class="input-group-append">
+			<button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+		  </div> 
+		</div>
+	</div>
+	
+	<br>
+	<div class="container">
+		<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <td scope="row">Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <td scope="row">Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
 	</div>
 	
     <div class="botonF1">
