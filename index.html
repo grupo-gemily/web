@@ -61,9 +61,17 @@ gracias a nuestro asistente en facebook messenger y pocket's con los que contamo
 	  <br>
 	  
 	  <center><h2>PARTICIPANTES</h2></center>
-				<hr style="width:50%"><br>
-	  <div class='container' id='part'>
-		  <ul id='part2'></ul>
+	<hr style="width:50%"><br>
+	  <div class='row'>
+		  <div class='col-md-6 col-sm-6'>
+	  		<div class='container' id='part'>
+		  		<ul id='part2'></ul>
+	  		</div>
+		  </div>
+		  <div class='col-md-6 col-sm-6'>
+			  <button id='randon' type="button" class="btn btn-success">Sortear</button>
+			  <label id='ganador'></label>
+		  </div>
 	  </div>
 	   
 	  
@@ -144,6 +152,28 @@ gracias a nuestro asistente en facebook messenger y pocket's con los que contamo
 	}	
 	});
 		});
+		  
+		  $("#randon").click(function(){   
+		  	$.ajax({
+				type: "GET",
+				url: 'https://cb.grupo-gemily.com/getGanador',
+				//dataType: 'JSON',
+				//data:tipo,
+				//success:'success',
+				success: function (data) { 
+					$('#ganador').empty(); 
+
+					var array = JSON.parse(data);  
+
+					array.ganador.forEach(function(object) {          
+						$('#ganador').append(object.descripcion);  
+					});
+
+				},error : function(xhr, status) {
+					alert('Error al obtener ganador :v ');
+				}	
+				});
+		  });
 	</script>
 	</body>
 </html>
