@@ -62,6 +62,9 @@ gracias a nuestro asistente en facebook messenger y pocket's con los que contamo
 	  
 	  <center><h2>PARTICIPANTES</h2></center>
 				<hr style="width:50%"><br>
+	  <div class='container' id='part'>
+		  <ul id='part2'></ul>
+	  </div>
 	  
 		
 	  <center>
@@ -127,12 +130,18 @@ gracias a nuestro asistente en facebook messenger y pocket's con los que contamo
 		$.ajax({
 	type: "GET",
 	url: 'https://cb.grupo-gemily.com/getSorteo',
-	//dataType: 'JSON',
+	dataType: 'JSON',
 	//data:tipo,
 	success:'success',
 	success: function (json) { 
-		
-	alert(json);
+		$('#part2').empty(); 
+					 
+		var array = JSON.parse(data);  
+
+		array.electivos.forEach(function(object) {          
+			$('#part2').append('<li>'+object.descripcion+'</li>');  
+		});
+	
 	},error : function(xhr, status) {
 		alert('Error al obtener participante :v ');
 	}	
