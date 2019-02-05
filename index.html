@@ -24,6 +24,33 @@ gracias a nuestro asistente en facebook messenger y pocket's con los que contamo
 	  <center>
 	  	<iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Ffacebook.com%2FEasyBuy2019&width=166&layout=button_count&action=like&size=small&show_faces=true&share=true&height=46&appId=2254072454612460" width="166" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 	  </center>  
+	  
+	  <!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v3.2'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/es_ES/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="2055188164773221"
+  theme_color="#ff7e29"
+  logged_in_greeting="Hola, realiza tu pedido o déjanos un mensaje 😊😊"
+  logged_out_greeting="Hola, realiza tu pedido o déjanos un mensaje 😊😊">
+</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
