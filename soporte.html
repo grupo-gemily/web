@@ -42,14 +42,13 @@
 		  
 		  
 		  window.extAsyncInit = function() {
-			  alert("cargi tdi");
 			  //obtener ID DEL USUARIO
 			   MessengerExtensions.getUserID(function success(uids) {
   	// User ID was successfully obtained. 
       	var psid = uids.psid;
    alert(psid);
     }, function error(err, errorMessage) {      
-  	alert("is not messenger");
+  	alert("is not messenger app"); 
     });    
 		
 		  };
@@ -207,8 +206,13 @@ let message = {
 MessengerExtensions.beginShareFlow(function(share_response) {
   // User dismissed without error, but did they share the message?
   if(share_response.is_sent){
-    // The user actually did share. 
-    // Perhaps close the window w/ requestCloseBrowser().
+    //cuando ya se envio a la conversacion
+	  //intentaremos cerrar el web view
+	  MessengerExtensions.requestCloseBrowser(function success() {
+  // webview closed
+}, function error(err) {
+  alert("Cierra esta ventana.");
+});
   }
 }, 
 function(errorCode, errorMessage) {      
@@ -220,9 +224,20 @@ message,
 	}
 	  </script>  
 	  
-	  <button onclick="hola()">Click me</button>
+	  <button >Click me</button>
 	  
 	  
+	  <div style="position: fixed;
+bottom: 0;
+width: 100%;
+padding: .5rem 1rem;
+background-image: linear-gradient(hsla(0,0%,100%,0),#fff 40%);">
+
+	<button type="button" onclick="hola()" class='btn btn-primary' style="width: 100%;
+height: 2.75rem;
+margin: 0;
+background-color: #0083ff;"> Enviar a la conversación</button>
+</div>
 	  
 
     <!-- Optional JavaScript -->
