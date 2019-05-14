@@ -43,7 +43,16 @@
 		  
 		  window.extAsyncInit = function() {
 			  alert("cargi tdi");
-			};
+			  //obtener ID DEL USUARIO
+			   MessengerExtensions.getUserID(function success(uids) {
+  	// User ID was successfully obtained. 
+      	var psid = uids.psid;
+   alert(psid);
+    }, function error(err, errorMessage) {      
+  	// Error handling code
+    });    
+		
+		  };
 		  </script>
   <br>
     <div class="container">
