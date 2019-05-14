@@ -155,6 +155,47 @@
 </div>
 
 
+	  
+let message = {
+  "attachment":{
+    "type":"template",
+    "payload":{
+      "template_type":"generic",
+      "elements": [{
+        "title":"I took Peter's 'Which Hat Are You?' Quiz",
+        "image_url": "https://grupo-gemily.com/agregar.png",
+        "subtitle": "My result: Fez",
+        "default_action":{
+          "type":"web_url",
+          "url": "https://grupo-gemily.com/soporte.html"
+        },
+        "buttons":[{
+          "type":"web_url",
+          "url":"https://grupo-gemily.com/soporte.html",
+          "title":"Take the Quiz"
+        }]
+      }]
+    }
+  }
+};
+
+MessengerExtensions.beginShareFlow(function(share_response) {
+  // User dismissed without error, but did they share the message?
+  if(share_response.is_sent){
+    // The user actually did share. 
+    // Perhaps close the window w/ requestCloseBrowser().
+  }
+}, 
+function(errorCode, errorMessage) {      
+// An error occurred in the process
+
+},
+message,
+"broadcast");	  
+	  
+	  
+	  
+	  
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
