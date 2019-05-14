@@ -203,6 +203,7 @@ let message = {
   }
 };
 
+	function hola(){
 MessengerExtensions.beginShareFlow(function(share_response) {
   // User dismissed without error, but did they share the message?
   if(share_response.is_sent){
@@ -216,7 +217,10 @@ function(errorCode, errorMessage) {
 },
 message,
 "current_thread");	  
+	}
 	  </script>  
+	  
+	  <button onclick="hola()">Click me</button>
 	  
 	  
 	  
