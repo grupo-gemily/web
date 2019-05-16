@@ -31,6 +31,33 @@
   </head>
   <body>
 	  <script>
+			(function(d, s, id){
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) {return;}
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'Messenger'));  
+			
+			//cuando carga , se execute
+			
+			window.extAsyncInit = function() {
+				MessengerExtensions.getContext('2214755108801388', 
+				  function success(thread_context){
+					  
+alert(1);
+						
+				  },
+				  function error(err){
+					alert(0);
+					window.attachApp();
+				  }
+				);
+			};
+			
+		</script>
+	  
+	  <script>/*
 		  (function(d, s, id){
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -52,7 +79,7 @@
     });    
 		
 		  };
-		  </script>
+		*/  </script>
   <br>
     <div class="container">
 	
