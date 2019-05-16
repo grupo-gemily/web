@@ -42,7 +42,19 @@
 			//cuando carga , se execute
 			
 			window.extAsyncInit = function() {
-				MessengerExtensions.getContext('2214755108801388', 
+				
+				MessengerExtensions.askPermission(
+  function(permission_response) {
+    // Person grants or rejects the asked permission.
+    let permissions = permission_response.permissions; // list of all permissions granted
+    let isGranted = permission_response.isGranted;
+
+    if (isGranted) {
+      
+	    //el acceso se sedio
+	    
+	    
+	    MessengerExtensions.getContext('2214755108801388', 
 				  function success(thread_context){
 					  
 				alert(1);
@@ -53,6 +65,20 @@
 					window.attachApp();
 				  }
 				);
+    }
+    
+  }, function(errorCode, errorMessage) {
+    alert("lo sentimos necesitamos su concentimiento");
+  },
+  "user_profile"
+);
+				
+				
+				
+				
+				
+				
+				
 			};
 			
 		</script>
