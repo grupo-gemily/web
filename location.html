@@ -25,6 +25,32 @@
     <script>
       
       
+      x =navigator.geolocation;
+      x.getCurrentPosition(success,failure);
+      
+      function success(position){
+        var myLat=position.coords.latitude;
+        var myLong=position.coords.longitude;
+        
+        var coors=new google.maps.LatLng(myLat,myLong);
+        
+        var mapOptions={
+          zoom:9,
+          center:coors,
+          mapTypeId:google.maps.MapTypeId.ROADMAP
+        }
+        
+        var map=new google.maps.Map(document.getElementById("map"),mapOptions);
+        var marker=new google.maps.Marker({map:map,position:coors,
+                                           icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+                                                    new google.maps.Size(22,22),
+                                                    new google.maps.Point(0,18),
+                                                    new google.maps.Point(11,11))});
+      }
+      
+      function failure(){}
+      
+   /*   
       var myloc = new google.maps.Marker({
     clickable: false,
     icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
@@ -43,7 +69,7 @@ if (navigator.geolocation) {
     }, function(error) {
         // ...
     });
-}
+}*/
     </script>
  
   </body>
