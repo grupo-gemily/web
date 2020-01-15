@@ -14,12 +14,20 @@
 </head>
 <body>
 <div id="map"></div>
-<nav class="navbar fixed-bottom navbar-expand-sm ">
-		  <a id="location" href="#" style="width:100%;" class="btn btn-success"><i class="fas fa-thumbs-up"></i> ENTREGAR AQUÍ</a> 
-		</nav>
 
+<nav class="navbar fixed-bottom navbar-expand-sm " style="display:inline !important">
+	
+			<textarea style="width:80%"></textarea>
+		<br>
+			<a id="location" style="width:80%" href="#" onclick="hola()" class="btn btn-success"><i class="fas fa-thumbs-up"></i> AGREGAR UBICACIÓN</a> 
+		
+</nav>	
 
+		
 <script>
+
+
+
 	mapboxgl.accessToken = 'pk.eyJ1IjoiamVwaWNhbWUiLCJhIjoiY2s1ZGdzZHR5MThtOTNtcndrYnc2cHZzcCJ9.WFU78lBCRGHhjTpSgxytcw';
 var map = new mapboxgl.Map({
 container: 'map', // container id
@@ -49,8 +57,16 @@ geolocate.on('geolocate', function(e) {
       var position = [lat,lon];
       alert(position);
 });
+
+
+
+function hola() {		
+  alert( "Handler for .click() called." );
+}
 </script>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
 </body>
