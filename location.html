@@ -8,6 +8,7 @@
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <style>
 	body { margin: 0; padding: 0; }
 	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
@@ -20,7 +21,7 @@
 			<center>
 			<textarea class="form-control m-1" placeholder="Ingresa referencias para llevar más rapido...." style="width:100%"></textarea>
 			
-			<a id="location" style="width:100%" href="#" onclick="hola()" class="btn btn-warning form-control m-1"><i class="fas fa-thumbs-up"></i> AGREGAR UBICACIÓN</a> 
+			<a id="location" style="width:100%" href="#" onclick="hola()" class="btn btn-warning form-control m-1 text-white"><i class="fas fa-map-marked-alt"></i> AGREGAR UBICACIÓN</a> 
 		</center>
 </nav>	
 
@@ -60,8 +61,6 @@ geolocate.on('geolocate', function(e) {
 	  $(".navbar").css("visibility","visible");
 });
 
-
-
 function hola() {		
   alert( "Handler for .click() called." );
 }
@@ -69,10 +68,6 @@ function hola() {
 $(".mapboxgl-ctrl-bottom-left").hide();		
 $(".mapboxgl-ctrl-bottom-right").hide();		
 </script>
-
-
-
-
 
 </body>
 </html>
