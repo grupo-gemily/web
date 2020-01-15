@@ -31,6 +31,18 @@ enableHighAccuracy: true
 trackUserLocation: true
 })
 );
+	
+	
+	//var geolocate = new mapboxgl.GeolocateControl();
+
+//map.addControl(geolocate);
+
+geolocate.on('geolocate', function(e) {
+      var lon = e.coords.longitude;
+      var lat = e.coords.latitude
+      var position = [lon, lat];
+      alert(position);
+});
 </script>
 
 </body>
