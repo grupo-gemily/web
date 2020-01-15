@@ -6,21 +6,27 @@
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <style>
 	body { margin: 0; padding: 0; }
-	#map { position: absolute; top: 0; bottom: 0; width: 100%; };
+	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
 </style>
 </head>
 <body>
 <div id="map"></div>
+<nav class="navbar fixed-bottom navbar-expand-sm ">
+		  <a id="location" href="#" style="width:100%;" class="btn btn-success"><i class="fas fa-thumbs-up"></i> ENTREGAR AQUÍ</a> 
+		</nav>
+
+
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoiamVwaWNhbWUiLCJhIjoiY2s1ZGdzZHR5MThtOTNtcndrYnc2cHZzcCJ9.WFU78lBCRGHhjTpSgxytcw';
 var map = new mapboxgl.Map({
 container: 'map', // container id
 style: 'mapbox://styles/mapbox/satellite-streets-v11',
-center: [-11.7825409,-77.1566537], // starting position
-zoom: 3 // starting zoom  
-});
+center: [-77.1566537,-11.7825409], // starting position
+zoom: 12 // starting zoom  
+});	
 
 // Add geolocate control to the map.
 /*map.addControl(
@@ -44,6 +50,8 @@ geolocate.on('geolocate', function(e) {
       alert(position);
 });
 </script>
+
+
 
 </body>
 </html>
