@@ -1,76 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTIoIW09mQrSNd0K8voimrEmFp10lt2_A&callback=initMap"
-  type="text/javascript"></script>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script>
-      
-      
-      x =navigator.geolocation;
-      x.getCurrentPosition(success,failure);
-      
-      function success(position){
-        var myLat=position.coords.latitude;
-        var myLong=position.coords.longitude;
-        
-        var coors=new google.maps.LatLng(myLat,myLong);
-        
-        var mapOptions={
-          zoom:9,
-          center:coors,
-          mapTypeId:google.maps.MapTypeId.ROADMAP
-        }
-        
-        var map=new google.maps.Map(document.getElementById("map"),mapOptions);
-        var marker=new google.maps.Marker({map:map,position:coors,
-                                           icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-                                                    new google.maps.Size(22,22),
-                                                    new google.maps.Point(0,18),
-                                                    new google.maps.Point(11,11))});
-      }
-      
-      function failure(){}
-      
-   /*   
-      var myloc = new google.maps.Marker({
-    clickable: false,
-    icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-                                                    new google.maps.Size(22,22),
-                                                    new google.maps.Point(0,18),
-                                                    new google.maps.Point(11,11)),
-    shadow: null,
-    zIndex: 999,
-    map: // your google.maps.Map object
+<head>
+<meta charset="utf-8" />
+<title>Locate the user</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
+<style>
+	body { margin: 0; padding: 0; }
+	#map { position: absolute; top: 0; bottom: 0; width: 100%; };
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiamVwaWNhbWUiLCJhIjoiY2s1ZGdzZHR5MThtOTNtcndrYnc2cHZzcCJ9.WFU78lBCRGHhjTpSgxytcw';
+var map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [-96, 37.8], // starting position
+zoom: 3 // starting zoom
 });
 
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(pos) {
-        var me = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-        myloc.setPosition(me);
-    }, function(error) {
-        // ...
-    });
-}*/
-    </script>
- 
-  </body>
+// Add geolocate control to the map.
+map.addControl(
+new mapboxgl.GeolocateControl({
+positionOptions: {
+enableHighAccuracy: true
+},
+trackUserLocation: true
+})
+);
+</script>
+
+</body>
 </html>
