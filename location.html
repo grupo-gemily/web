@@ -16,7 +16,7 @@
 <body>
 <div id="map"></div>
 
-<nav class="navbar fixed-bottom navbar-expand-sm " style="display:inline !important">
+<nav class="navbar fixed-bottom navbar-expand-sm " style="display:inline !important;visibility: hidden;">
 			<center>
 			<textarea class="form-control m-1" placeholder="Ingresa referencias para llevar más rapido...." style="width:100%"></textarea>
 			
@@ -57,6 +57,7 @@ geolocate.on('geolocate', function(e) {
       var lat = e.coords.latitude
       var position = [lat,lon];
       alert(position);
+	  $(".navbar").css("visibility","visible");
 });
 
 
@@ -65,8 +66,8 @@ function hola() {
   alert( "Handler for .click() called." );
 }
 
-$(".mapboxgl-ctrl-bottom-left").hide();
-$(".mapboxgl-ctrl-bottom-right").hide();
+$(".mapboxgl-ctrl-bottom-left").hide();		
+$(".mapboxgl-ctrl-bottom-right").hide();		
 </script>
 
 
