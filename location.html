@@ -74,7 +74,7 @@ geolocate.on('geolocate', function(e) {
 
 
 function hola() {		
-	//alert(lat+" "+lon +" "+psid);
+	$(".navbar").prop('disabled', true);
 	
 	
 		Swal.fire({
@@ -102,12 +102,12 @@ function hola() {
 				  // an error occurred 
 				}); 
 			},error: function (request, status, error) { 
+				$(".navbar").prop('disabled', false);
 				Swal.fire({
-  icon: 'error',
-  title: 'Error...',
-  text: error
- 
-})
+				  icon: 'error',
+				  title: 'Error...',
+				  text: request.responseText
+				})
 			}  
 		
 		
