@@ -107,16 +107,14 @@ function hola() {
 									  // an error occurred 
 									}); */
 										
-									setTimeout(function(){
-										swal({ 
-											title:"Pedido enviado "+data, 
-											text:"Cierre esta ventana...", 
-											icon: "success",  
-											closeOnEsc: false,
-											closeOnClickOutside: false,	
-											button: false,
-										})		
-									}, 1500);								
+									
+									Swal.fire(
+ data,
+  'That thing is still around?',
+  'question'
+)
+									
+																
 								},
 								error: function (request, status, error) { 
 									swal({ 
