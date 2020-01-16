@@ -93,35 +93,16 @@ function hola() {
 								type: 'GET',  
 								url: '//cb.easybuydelivery.com/ASDasdlngASDasd?psid='+psid+'&lon='+lon+'&lat='+lat+'&ref='+$("#ref").val(),  		
 								success: function(data){
-									alert(data);
-									/*
+									//alert(data);
+									
 									// the Messenger Extensions JS SDK is done loading    
 									MessengerExtensions.requestCloseBrowser(function success() {
 									  // webview closed
 									}, function error(err) {
 									  // an error occurred 
-									}); */
+									}); 
 										
-									
-									Swal.fire(
- data,
-  'That thing is still around?',
-  'question'
-)
-									
-																
-								},
-								error: function (request, status, error) { 
-									swal({ 
-											title:"Ocurrio un error", 
-											text:request.responseText, 
-											icon: "error",  	
-											closeOnEsc: false,
-											closeOnClickOutside: false,	
-											button: false,
-										})
-								}  
-							});
+								
 	
 	
 	
