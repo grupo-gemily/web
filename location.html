@@ -90,30 +90,22 @@ function hola() {
     
 	
 	$.ajax({      
-								type: 'GET',  
-								url: '//cb.easybuydelivery.com/ASDasdlngASDasd?psid='+psid+'&lon='+lon+'&lat='+lat+'&ref='+$("#ref").val(),  		
-								success: function(data){
-									//alert(data);
-									
-									// the Messenger Extensions JS SDK is done loading    
-									MessengerExtensions.requestCloseBrowser(function success() {
-									  // webview closed
-									}, function error(err) {
-									  // an error occurred 
-									}); 
-										
-								
-	
-	
-	
-  }
-})
-
-
+			type: 'GET',  
+			url: '//cb.easybuydelivery.com/ASDasdlngASDasd?psid='+psid+'&lon='+lon+'&lat='+lat+'&ref='+$("#ref").val(),  		
+			success: function(data){
+				//alert(data);
 				
-	
-
-}
+				// the Messenger Extensions JS SDK is done loading    
+				MessengerExtensions.requestCloseBrowser(function success() {
+				  // webview closed
+				}, function error(err) {
+				  // an error occurred 
+				}); 
+			}
+	});
+	}
+	});
+	}
 
 $(".mapboxgl-ctrl-bottom-left").hide();		
 $(".mapboxgl-ctrl-bottom-right").hide();		
