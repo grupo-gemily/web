@@ -99,16 +99,17 @@ function hola() {
 								},
 								success: function(data){
 									
+									/*
 									// the Messenger Extensions JS SDK is done loading    
 									MessengerExtensions.requestCloseBrowser(function success() {
 									  // webview closed
 									}, function error(err) {
 									  // an error occurred 
-									}); 
+									}); */
 										
 									setTimeout(function(){
 										swal({ 
-											title:"Pedido enviado", 
+											title:"Pedido enviado "+data, 
 											text:"Cierre esta ventana...", 
 											icon: "success",  
 											closeOnEsc: false,
