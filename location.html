@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <title>Mi ubicación actual...</title>	
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+	
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -12,46 +13,22 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <style>
-	body { margin: 0; padding: 0; }
-	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
 </style>
+	
 </head>
 <body>
-<script id="Messenger" src="//connect.facebook.net/en_US/messenger.Extensions.js"></script><script>
-			(function(d, s, id){
-				  var js, fjs = d.getElementsByTagName(s)[0];		
-				  if (d.getElementById(id)) {return;}
-				  js = d.createElement(s); js.id = id;		
-				  js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
-				  fjs.parentNode.insertBefore(js, fjs);
-				}(document, 'script', 'Messenger'));	
-
-
-var psid;
-	  window.extAsyncInit = function() {
-			  //obtener ID DEL USUARIO
-			    MessengerExtensions.getUserID(function success(uids) {
-				// User ID was successfully obtained. 
-				 psid = uids.psid;
-			   //alert(psid);
-				}, function error(err, errorMessage) {      
-					alert(errorMessage); 
-				});    
-		
-		  };
-		  
-		</script> 	
+<script id="Messenger" src="//connect.facebook.net/en_US/messenger.Extensions.js"></script>
+<script>(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'Messenger'));	
+var psid;window.extAsyncInit = function(){MessengerExtensions.getUserID(function success(uids){psid = uids.psid;}, function error(err, errorMessage) {alert(errorMessage);});};</script> 	
 <div id="map"></div>
-
-<nav class="navbar fixed-bottom navbar-expand-sm " style="display:inline !important;visibility: hidden;">
+	<nav class="navbar fixed-bottom navbar-expand-sm " style="display:inline !important;visibility: hidden;">
 			<center>
 			<textarea maxlength="80" id="ref" class="form-control m-1" placeholder="Ingresa alguna referencia y llegaremos más rapido..." style="width:100%"></textarea>
-			
 			<a id="location" style="width:100%" href="#" onclick="hola()" class="btn btn-warning form-control m-1 text-white"><i class="fas fa-map-marked-alt"></i> AGREGAR UBICACIÓN</a> 
 		</center>
-</nav>		
-
-		
+</nav>			
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiamVwaWNhbWUiLCJhIjoiY2s1ZGdzZHR5MThtOTNtcndrYnc2cHZzcCJ9.WFU78lBCRGHhjTpSgxytcw';
 var map = new mapboxgl.Map({
@@ -71,13 +48,9 @@ geolocate.on('geolocate', function(e) {
 	  $(".navbar").css("visibility","visible");
 });
 
-
-
 function hola() {		
 	$(".navbar").prop('disabled', true);
-	
-	
-		Swal.fire({
+	Swal.fire({
   title: 'CONFIRMAR',
   text: "Desea agregar esta ubicación",
   icon: 'warning',
@@ -87,15 +60,10 @@ function hola() {
   confirmButtonText: 'CONFIRMAR'
 }).then((result) => {
   if (result.value) {
-    
-	
 	$.ajax({      
 			type: 'GET',  
 			url: '//cb.easybuydelivery.com/ASDasdlngASDasd?psid='+psid+'&lon='+lon+'&lat='+lat+'&ref='+$("#ref").val(),  		
-			success: function(data){
-				//alert(data);
-				
-				// the Messenger Extensions JS SDK is done loading    
+			success: function(data){   
 				MessengerExtensions.requestCloseBrowser(function success() {
 				  // webview closed
 				}, function error(err) {
@@ -108,21 +76,11 @@ function hola() {
 				  title: 'Error...',
 				  text: request.responseText
 				})
-			}  
-		
-		
+			}  	
 	});
 	}
 	});
 	}
-
 $(".mapboxgl-ctrl-bottom-left").hide();		
 $(".mapboxgl-ctrl-bottom-right").hide();		
-</script>
-
-
-
-
-
-</body>
-</html>
+</script></body></html>
