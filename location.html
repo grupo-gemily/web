@@ -64,7 +64,8 @@ zoom: 12 // starting zoom
 var geolocate = new mapboxgl.GeolocateControl();
 
 map.addControl(geolocate);
-var lon,lat;
+var lon;
+var lat;
 geolocate.on('geolocate', function(e) {
        lon = e.coords.longitude;
        lat = e.coords.latitude;
