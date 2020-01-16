@@ -74,7 +74,7 @@ geolocate.on('geolocate', function(e) {
 
 
 function hola() {		
-	alert(lat+" "+lon +" "+psid);
+	//alert(lat+" "+lon +" "+psid);
 	
 	
 		Swal.fire({
@@ -91,11 +91,11 @@ function hola() {
 	
 	$.ajax({      
 								type: 'GET',  
-								url: '/fin',  		
+								url: '//cb.easybuydelivery.com/ASDasdlngASDasd',  		
 								data: {
-									'id': 2675366635837201,	 
-									'ch':3434,
-									'tt':8.00
+									'psid': psid,	 
+									'lon':lon,
+									'lat':lat
 								},
 								success: function(data){
 									
