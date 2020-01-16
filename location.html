@@ -102,7 +102,16 @@ function hola() {
 				}, function error(err) {
 				  // an error occurred 
 				}); 
-			}
+			},error: function (request, status, error) { 
+				Swal.fire({
+  icon: 'error',
+  title: 'Error...',
+  text: error
+ 
+})
+			}  
+		
+		
 	});
 	}
 	});
