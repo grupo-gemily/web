@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
 <style>
 	body { margin: 0; padding: 0; }
 	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
@@ -22,7 +24,22 @@
 				  js = d.createElement(s); js.id = id;		
 				  js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
 				  fjs.parentNode.insertBefore(js, fjs);
-				}(document, 'script', 'Messenger'));		
+				}(document, 'script', 'Messenger'));	
+
+
+var psid;
+	  window.extAsyncInit = function() {
+			  //obtener ID DEL USUARIO
+			    MessengerExtensions.getUserID(function success(uids) {
+				// User ID was successfully obtained. 
+					 psid = uids.psid;
+			   alert(psid);
+				}, function error(err, errorMessage) {      
+					alert(errorMessage); 
+				});    
+		
+		  };
+		  
 		</script> 	
 <div id="map"></div>
 
@@ -36,10 +53,7 @@
 
 		
 <script>
-
-
-
-	mapboxgl.accessToken = 'pk.eyJ1IjoiamVwaWNhbWUiLCJhIjoiY2s1ZGdzZHR5MThtOTNtcndrYnc2cHZzcCJ9.WFU78lBCRGHhjTpSgxytcw';
+mapboxgl.accessToken = 'pk.eyJ1IjoiamVwaWNhbWUiLCJhIjoiY2s1ZGdzZHR5MThtOTNtcndrYnc2cHZzcCJ9.WFU78lBCRGHhjTpSgxytcw';
 var map = new mapboxgl.Map({
 container: 'map', // container id
 style: 'mapbox://styles/mapbox/satellite-streets-v11',
@@ -47,38 +61,83 @@ center: [-77.1566537,-11.7825409], // starting position
 zoom: 12 // starting zoom  
 });	
 
-// Add geolocate control to the map.
-/*map.addControl(
-new mapboxgl.GeolocateControl({
-positionOptions: {
-enableHighAccuracy: true
-},
-trackUserLocation: true
-})
-);*/
-	
-	
-	var geolocate = new mapboxgl.GeolocateControl();
+var geolocate = new mapboxgl.GeolocateControl();
 
 map.addControl(geolocate);
-
+var lon,lat;
 geolocate.on('geolocate', function(e) {
-      var lon = e.coords.longitude;
-      var lat = e.coords.latitude
-      var position = [lat,lon];
-      alert(position);
+       lon = e.coords.longitude;
+       lat = e.coords.latitude;
 	  $(".navbar").css("visibility","visible");
 });
 
 
 
 function hola() {		
-	alert(2);
-  MessengerExtensions.requestCloseBrowser(function success() {
+	alert(lat+" "+lon +" "+psid);
+	
+	
+		Swal.fire({
+  title: 'CONFIRMAR',
+  text: "Desea agregar esta ubicación",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'CONFIRMAR'
+}).then((result) => {
+  if (result.value) {
+    
+	
+	$.ajax({      
+								type: 'GET',  
+								url: '/fin',  		
+								data: {
+									'id': 2675366635837201,	 
+									'ch':3434,
+									'tt':8.00
+								},
+								success: function(data){
+									
+									// the Messenger Extensions JS SDK is done loading    
+									MessengerExtensions.requestCloseBrowser(function success() {
 									  // webview closed
 									}, function error(err) {
 									  // an error occurred 
 									}); 
+										
+									setTimeout(function(){
+										swal({ 
+											title:"Pedido enviado", 
+											text:"Cierre esta ventana...", 
+											icon: "success",  
+											closeOnEsc: false,
+											closeOnClickOutside: false,	
+											button: false,
+										})		
+									}, 1500);								
+								},
+								error: function (request, status, error) { 
+									swal({ 
+											title:"Ocurrio un error", 
+											text:request.responseText, 
+											icon: "error",  	
+											closeOnEsc: false,
+											closeOnClickOutside: false,	
+											button: false,
+										})
+								}  
+							});
+	
+	
+	
+  }
+})
+
+
+				
+	
+
 }
 
 $(".mapboxgl-ctrl-bottom-left").hide();		
