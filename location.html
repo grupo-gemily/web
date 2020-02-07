@@ -20,8 +20,11 @@ body { margin: 0; padding: 0; }
 </head>
 <body>
 <script id="Messenger" src="//connect.facebook.net/en_US/messenger.Extensions.js"></script>
-<script>(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'Messenger'));	
-var psid;window.extAsyncInit = function(){MessengerExtensions.getUserID(function success(uids){psid = uids.psid;}, function error(err, errorMessage) {alert(errorMessage);});};</script> 	
+<script>var psid;(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'Messenger'));	
+window.extAsyncInit = function(){MessengerExtensions.getUserID(function success(uids){
+	psid = uids.psid;
+	alert(psid);
+}, function error(err, errorMessage) {alert(errorMessage);});};</script> 	
 <div id="map"></div>
 	<nav class="navbar fixed-bottom navbar-expand-sm " style="display:inline !important;visibility: hidden;">
 			<center>
